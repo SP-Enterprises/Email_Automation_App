@@ -15,4 +15,4 @@ beautifulsoup4
 email-validator
 Werkzeug
 cryptography
-
+psycopg2
