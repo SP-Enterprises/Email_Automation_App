@@ -1,0 +1,9 @@
+pandas
+openpyxl
+jinja2
+flask
+python-dotenv
+flask
+flask_sqlalchemy
+flask_login
+python-dotenv

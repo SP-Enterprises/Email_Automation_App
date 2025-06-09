@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Use | EAP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-100 text-gray-900 min-h-screen px-4 py-8 sm:p-10 flex items-center justify-center font-mono"
+  style="font-family: 'Share Tech Mono', monospace;">
+
+  <div class="max-w-3xl w-full bg-white rounded-2xl shadow-lg p-6 sm:p-8 space-y-6">
+    <h1 class="text-2xl sm:text-3xl font-extrabold mb-4 text-purple-600 text-center sm:text-left">
+      📘 How to Use the Email Automation App
+    </h1>
+
+    <!-- Expand/Collapse All Toggle -->
+    <div class="text-right">
+      <button id="toggleAll" class="text-sm text-purple-700 underline hover:text-purple-900">
+        Expand All
+      </button>
+    </div>
+
+    <div class="space-y-4" id="accordionContainer">
+      <!-- Step 1 -->
+      <details class="group bg-gray-50 p-4 rounded-xl shadow" open>
+        <summary class="cursor-pointer font-semibold text-purple-600 text-lg flex justify-between items-center">
+          1. Create an Account
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 text-gray-800 text-base leading-relaxed">
+          Sign up using your <strong>Gmail email</strong> and any password. The <strong>Sender Email</strong> must
+          match with the email used for registration. Use an
+          <strong>App Password</strong> instead of your regular Gmail password.
+          <a class="text-purple-600 underline" href="https://myaccount.google.com/apppasswords"
+            target="_blank">(Generate App Password)</a>
+        </p>
+      </details>
+
+      <!-- Step 2 -->
+      <details class="group bg-gray-50 p-4 rounded-xl shadow">
+        <summary class="cursor-pointer font-semibold text-purple-600 text-lg flex justify-between items-center">
+          2. Login & Dashboard Access
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 text-gray-800 text-base leading-relaxed">
+          Log in with your registered Gmail and password. You'll be redirected to your <strong>Dashboard</strong> after
+          successful login.
+        </p>
+      </details>
+
+      <!-- Step 3 -->
+      <details class="group bg-gray-50 p-4 rounded-xl shadow">
+        <summary class="cursor-pointer font-semibold text-purple-600 text-lg flex justify-between items-center">
+          3. Navigate to the Email Sender Page
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 text-gray-800 text-base leading-relaxed">
+          Click on <strong>“Go to Email Sender”</strong> from your dashboard. The sender page contains two sections:
+          <strong>Email Preview</strong> and <strong>Send Emails</strong>.
+        </p>
+      </details>
+
+      <!-- Step 4 -->
+      <details class="group bg-gray-50 p-4 rounded-xl shadow">
+        <summary class="cursor-pointer font-semibold text-purple-600 text-lg flex justify-between items-center">
+          4. Use the Preview Section
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 text-gray-800 text-base leading-relaxed">
+          Use the <strong>Email Preview</strong> section to see how your email might appear. Fonts and layout may vary
+          in the final email, and your logo(in email signature) will be auto-included at the bottom.
+        </p>
+      </details>
+
+      <!-- Step 5 -->
+      <details class="group bg-gray-50 p-4 rounded-xl shadow">
+        <summary class="cursor-pointer font-semibold text-purple-600 text-lg flex justify-between items-center">
+          5. Upload Your Excel File
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <div class="mt-2 text-gray-800 text-base leading-relaxed">
+          Upload an <strong>Excel (.xlsx)</strong> file with columns like <code
+            class="bg-gray-200 px-1 rounded">Email</code>,
+          <code class="bg-gray-200 px-1 rounded">company_name</code>, etc.
+          <div class="overflow-x-auto mt-4">
+            <table class="min-w-full text-sm border border-gray-300 rounded-lg">
+              <thead class="bg-gray-200 text-gray-700">
+                <tr>
+                  <th class="px-4 py-2 border">Email</th>
+                  <th class="px-4 py-2 border">company_name</th>
+                  <th class="px-4 py-2 border">full_name</th>
+                  <th class="px-4 py-2 border">offer_code</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-800">
+                <tr class="bg-white">
+                  <td class="px-4 py-2 border">ABC@example.com</td>
+                  <td class="px-4 py-2 border">Alpha Solutions</td>
+                  <td class="px-4 py-2 border">ABC </td>
+                  <td class="px-4 py-2 border">SAVE10</td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="px-4 py-2 border">XYZ@demo.com</td>
+                  <td class="px-4 py-2 border">Beta Systems</td>
+                  <td class="px-4 py-2 border">XYZ </td>
+                  <td class="px-4 py-2 border">WELCOME15</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <!-- Step 6 -->
+      <details class="group bg-gray-50 p-4 rounded-xl shadow">
+        <summary class="cursor-pointer font-semibold text-purple-600 text-lg flex justify-between items-center">
+          6. Upload the Template File
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <div class="mt-2 text-gray-800 text-base leading-relaxed">
+          Upload a <strong>.docx</strong> template with placeholder variables like <code
+            class="bg-gray-200 px-1 rounded">&#123;&#123; company_name &#125;&#125;</code>. These will be replaced using
+          values from Excel.
+          <div
+            class="bg-gray-100 p-4 mt-4 rounded-lg border border-gray-300 text-sm leading-relaxed whitespace-pre-line">
+            Hi <code class="bg-gray-200 px-1 rounded">&#123;&#123; full_name &#125;&#125;</code>,
+
+            We’re excited to offer your company, <code
+              class="bg-gray-200 px-1 rounded">&#123;&#123; company_name &#125;&#125;</code>, an exclusive discount.
+            Use code <code class="bg-gray-200 px-1 rounded">&#123;&#123; offer_code &#125;&#125;</code>to save on your
+            next order.
+
+            Best regards,
+            The Team
+          </div>
+        </div>
+      </details>
+
+      <!-- Step 7 -->
+      <details class="group bg-gray-50 p-4 rounded-xl shadow">
+        <summary class="cursor-pointer font-semibold text-purple-600 text-lg flex justify-between items-center">
+          7. Preview the Placeholder Output
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <div class="mt-2 text-gray-800 text-base leading-relaxed">
+          After uploading both files, check the <strong>Email Preview</strong> section to confirm placeholder values
+          were correctly filled.
+          <div
+            class="bg-gray-100 p-4 mt-4 rounded-lg border border-gray-300 text-sm leading-relaxed whitespace-pre-line">
+            Hi <span class="text-purple-700 font-semibold">ABC </span>,
+
+            We’re excited to offer your company, <span class="text-purple-700 font-semibold">Alpha Solutions</span>, an
+            exclusive discount.
+            Use code <span class="text-purple-700 font-semibold">SAVE10</span> to save on your next order.
+
+            Best regards,
+            The Team
+          </div>
+          <p class="text-sm text-gray-600 mt-2">⚠️ Fonts/styling shown here may vary in recipient's email client.</p>
+        </div>
+      </details>
+
+      <!-- Step 8 -->
+      <details class="group bg-gray-50 p-4 rounded-xl shadow">
+        <summary class="cursor-pointer font-semibold text-purple-600 text-lg flex justify-between items-center">
+          8. Send Emails
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 text-gray-800 text-base leading-relaxed">
+          Go to the <strong>Send Emails</strong> section and click <strong>“Send Emails”</strong>. A live progress bar
+          will display delivery status and errors.
+        </p>
+      </details>
+
+      <!-- Step 9 -->
+      <details class="group bg-gray-50 p-4 rounded-xl shadow">
+        <summary class="cursor-pointer font-semibold text-purple-600 text-lg flex justify-between items-center">
+          9. Download Logs
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 text-gray-800 text-base leading-relaxed">
+          Download the <strong>Log File</strong> after sending to verify successful/failed deliveries and associated
+          error messages.
+        </p>
+      </details>
+
+      <!-- Step 10 -->
+      <details class="group bg-gray-50 p-4 rounded-xl shadow">
+        <summary class="cursor-pointer font-semibold text-purple-600 text-lg flex justify-between items-center">
+          10. Manage SMTP Settings<span class="text-yellow-500">(Coming Soon)</span>
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 text-gray-800 text-base leading-relaxed">
+          Use the Dashboard to securely update your <strong>SMTP credentials</strong> (Gmail ID and App
+          Password).
+        </p>
+      </details>
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center sm:text-left">
+      <a href="/dashboard"
+        class="inline-block mt-6 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 text-sm sm:text-base font-semibold transition">
+        ⬅ Back to Dashboard
+      </a>
+    </div>
+  </div>
+
+  <!-- Expand/Collapse Script -->
+  <script>
+    const toggleBtn = document.getElementById('toggleAll');
+    const detailsList = document.querySelectorAll('#accordionContainer details');
+
+    toggleBtn.addEventListener('click', () => {
+      const anyClosed = [...detailsList].some(d => !d.open);
+      detailsList.forEach(d => d.open = anyClosed);
+      toggleBtn.textContent = anyClosed ? 'Collapse All' : 'Expand All';
+    });
+  </script>
+
+</body>
+
+</html>

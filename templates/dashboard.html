@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard | EAP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-900 min-h-screen p-4 sm:p-6" style="font-family: 'Share Tech Mono', monospace;">
+
+  <!-- Toast -->
+  <div id="toast"
+    class="hidden fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded shadow-lg z-50">
+  </div>
+
+  {% if current_user.is_authenticated %}
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <!-- Welcome Card -->
+    <div class="col-span-1 md:col-span-2 bg-white shadow-lg rounded-xl p-5 sm:p-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-purple-600 mb-2">Welcome, {{ current_user.name }}!</h2>
+      <p class="text-gray-700 text-base sm:text-lg">You're logged in as <strong>{{ current_user.email }}</strong></p>
+      <!-- <div class="mt-4 space-y-2 sm:space-x-4 sm:space-y-0 flex flex-col sm:flex-row">
+        <a href="/"
+          class="inline-block bg-purple-600 text-white px-6 py-2 rounded text-center hover:bg-purple-700 transition">
+          Go to Email Sender
+        </a>
+        <a href="/logout"
+          class="inline-block bg-gray-300 text-gray-800 px-6 py-2 rounded text-center hover:bg-gray-400 transition">
+          Log Out
+        </a>
+      </div> -->
+      <!-- Existing Buttons -->
+      <div class="mt-4 space-y-2 sm:space-x-4 sm:space-y-0 flex flex-col sm:flex-row">
+        <a href="/"
+          class="inline-block bg-purple-600 text-white px-6 py-2 rounded text-center hover:bg-purple-700 transition">
+          Go to Email Sender
+        </a>
+        <a href="/logout"
+          class="inline-block bg-gray-300 text-gray-800 px-6 py-2 rounded text-center hover:bg-gray-400 transition">
+          Log Out
+        </a>
+      </div>
+
+      <!-- Lottie animation (visible only on lg screens) -->
+      <div class="hidden lg:flex justify-center mt-6">
+        <dotlottie-player src="https://lottie.host/aada454a-f270-4346-83ae-f4a1f3cffbf5/oPcC8twXjM.lottie"
+          background="transparent" speed="1" style="width: 250px; height: 250px" loop autoplay></dotlottie-player>
+      </div>
+    </div>
+
+    <!-- Analytics -->
+    <div
+      class="bg-white shadow-lg rounded-xl p-5 sm:p-6 text-center transform transition-transform duration-300 hover:scale-105">
+      <h3 class="text-lg sm:text-xl font-semibold text-gray-700 mb-4">📊 Email Analytics</h3>
+      <div class="grid grid-cols-1 gap-4">
+        <div class="bg-purple-100 text-purple-800 p-4 rounded-lg">
+          <div class="text-2xl sm:text-3xl font-bold">{{ current_user.emails_sent or 0 }}</div>
+          <div class="text-sm">Emails Sent</div>
+        </div>
+        <div class="bg-green-100 text-green-800 p-4 rounded-lg">
+          <div class="text-2xl sm:text-3xl font-bold">{{ current_user.campaigns_created or 0 }}</div>
+          <div class="text-sm">Campaigns Created</div>
+        </div>
+        <div class="bg-blue-100 text-blue-800 p-4 rounded-lg">
+          <div class="text-lg sm:text-2xl font-semibold">{{ current_user.account_status or 'Active' }}</div>
+          <div class="text-sm">Account Status</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Details -->
+    <div class="bg-white shadow-lg rounded-xl p-5 sm:p-6 transform transition-transform duration-300 hover:scale-105">
+      <h3 class="text-lg sm:text-xl font-semibold text-gray-700 mb-4 text-center">👤 Your Details</h3>
+      <ul class="text-sm text-gray-600 space-y-2">
+        <li><strong>Name:</strong> {{ current_user.name }}</li>
+        <li><strong>Email:</strong> {{ current_user.email }}</li>
+        <li><strong>Sender Email:</strong> {{ current_user.smtp_user or "Not Set" }}</li>
+        <li><strong>Joined:</strong> {{ current_user.created_at.strftime('%B %d, %Y') if current_user.created_at else
+          "Unknown" }}</li>
+      </ul>
+    </div>
+
+    <!-- How to Use -->
+    <div
+      class="bg-white shadow-lg p-5 sm:p-6 rounded-xl  text-center transform transition-transform duration-300 hover:scale-105">
+      <!-- <div class="text-yellow-500 text-4xl mb-4">🧠</div>
+      <h3 class="text-lg sm:text-xl font-semibold mb-2">How to Use</h3> -->
+      <h3 class="text-lg sm:text-xl font-semibold text-gray-700 mb-4 text-center">🧠
+        How to Use</h3>
+      <p class="mb-4 text-sm sm:text-base">Learn how to send emails with your own templates and contact lists</p>
+      <a href="/how-to-use" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded transition">
+        Open Guide
+      </a>
+    </div>
+
+    <!-- Recent Activity -->
+    <div
+      class="bg-white shadow-lg rounded-xl p-5 sm:p-6 text-center transform transition-transform duration-300 hover:scale-105">
+      <h3 class="text-lg sm:text-xl font-semibold text-gray-700 mb-2">📬 Recent Activity</h3>
+      <p class="text-gray-500">Coming Soon</p>
+    </div>
+
+  </div>
+  {% endif %}
+
+  <script>
+    function showToast(message, color = 'bg-green-500') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `fixed top-4 left-1/2 transform -translate-x-1/2 text-white px-4 py-2 rounded shadow-lg z-50 ${color}`;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    }
+
+    {% with messages = get_flashed_messages(with_categories = true) %}
+    {% if messages %}
+    window.onload = () => {
+      {% for category, message in messages %}
+      showToast("{{ message }}", "{{ 'bg-green-500' if category == 'success' else 'bg-red-500' }}");
+      {% endfor %}
+    }
+    {% endif %}
+    {% endwith %}
+  </script>
+</body>
+
+</html>

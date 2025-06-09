@@ -1,0 +1,12 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.sqlite3
+instance/
+
+# Environment
+.env
+
+# Logs
+email_log.csv
+*.log
