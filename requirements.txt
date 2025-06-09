@@ -8,3 +8,4 @@ flask_sqlalchemy
 flask_login
 python-dotenv
 gunicorn
+mammoth
