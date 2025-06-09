@@ -3,7 +3,8 @@ import os
 class Config:
     SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = os.environ['SQLALCHEMY_DATABASE_URI']  # Replace with production DB URL
+    SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI").replace("postgres://", "postgresql://", 1)
+
 
     # Mail settings
     MAIL_SERVER = "smtp.gmail.com"

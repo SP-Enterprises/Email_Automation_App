@@ -23,9 +23,16 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "super-secret-key")
 
-# Database config
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+app = Flask(__name__)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+db = SQLAlchemy()
+
+if os.environ.get("FLASK_ENV") == "production":
+    app.config.from_object("production_config")
+else:
+    # local dev
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+
 db.init_app(app)
 
 app.config.update(
