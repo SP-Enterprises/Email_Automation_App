@@ -10,3 +10,4 @@ python-dotenv
 gunicorn
 mammoth
 pymupdf
+python-docx
