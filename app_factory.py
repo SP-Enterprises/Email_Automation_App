@@ -25,6 +25,10 @@ def create_app():
         app.config.from_object("config.ProdConfig")
     else:
         app.config.from_object("config.DevConfig")
+        
+    from models import db  # adjust import if needed
+    with app.app_context():
+        db.create_all()
 
     db.init_app(app)
     login_manager.init_app(app)
