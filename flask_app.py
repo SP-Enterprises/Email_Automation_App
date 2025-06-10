@@ -8,8 +8,6 @@ import pandas as pd
 import os, csv, re
 from dotenv import load_dotenv
 from models import db, User
-from flask_login import current_user
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import Session
 from flask import send_file
 from flask_mail import Mail, Message
@@ -23,15 +21,22 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "super-secret-key")
 
-app = Flask(__name__)
+
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy()
 
-if os.environ.get("FLASK_ENV") == "production":
-    app.config.from_object("production_config")
+# if os.environ.get("FLASK_ENV") == "production":
+#     app.config.from_object("production_config")
+# else:
+#     # local dev
+#     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+
+env = os.getenv("FLASK_ENV", "development")
+if env == "production":
+    app.config.from_object("config.ProdConfig")
 else:
-    # local dev
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+    app.config.from_object("config.DevConfig")
+
 
 db.init_app(app)
 
@@ -209,6 +214,9 @@ def send_emails():
             row_data = {normalize_key(k): str(v).strip() for k, v in raw_data.items()}
 
             email = row_data.get("email", "")
+            if not email:
+                flash(f"Missing email in row: {row_data}", "danger")
+                continue
             company_name = row_data.get("company_name", "Unknown")
 
             try:
@@ -220,13 +228,19 @@ def send_emails():
                 emails_sent_count += 1  # ✅ count only on success
             except Exception as e:
                 log_writer.writerow([company_name, email, "Failed", datetime.now(), str(e)])
+                flash(f"Error sending to {email}: {e}", "danger")
             progress_data["sent"] += 1
 
     # ✅ Safely update DB now
-    user = User.query.get(current_user.id)
-    user.emails_sent += emails_sent_count
-    user.campaigns_created += 1
-    db.session.commit()
+    # user = User.query.get(current_user.id)
+    # user.emails_sent += emails_sent_count
+    # user.campaigns_created += 1
+    # db.session.commit()
+    with db.session() as session:
+        user = session.get(User, current_user.id)
+        user.emails_sent += emails_sent_count
+        user.campaigns_created += 1
+        session.commit()
 
     return jsonify({
         "message": "Emails processed. See 'email_log.csv' for results."
