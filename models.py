@@ -4,10 +4,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import uuid
 from sqlalchemy import Boolean
 from datetime import datetime
+from cryptography.fernet import Fernet
+import os
+
 
 db = SQLAlchemy()
 
-class User(UserMixin, db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     email = db.Column(db.String(100), unique=True, nullable=False)
@@ -31,10 +34,6 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-
-
-from cryptography.fernet import Fernet
-import os
 
 def encrypt_password(password):
     cipher = Fernet(os.getenv("FERNET_KEY").encode())
