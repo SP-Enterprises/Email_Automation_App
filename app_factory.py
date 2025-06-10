@@ -26,10 +26,6 @@ def create_app():
     else:
         app.config.from_object("config.DevConfig")
         
-    from models import db  # adjust import if needed
-    with app.app_context():
-        db.create_all()
-
     db.init_app(app)
     login_manager.init_app(app)
     login_manager.login_view = "login"
@@ -37,5 +33,9 @@ def create_app():
 
     from flask_app import setup_routes
     setup_routes(app, db, login_manager, mail)
+    
+    from models import db  # adjust import if needed
+    with app.app_context():
+        db.create_all()
 
     return app
