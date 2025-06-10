@@ -34,8 +34,4 @@ def create_app():
     from flask_app import setup_routes
     setup_routes(app, db, login_manager, mail)
     
-    from models import db  # adjust import if needed
-    with app.app_context():
-        db.create_all()
-
     return app
