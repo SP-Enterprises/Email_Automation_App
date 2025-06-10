@@ -1,4 +1,10 @@
-from flask_app import app
+# from flask_app import app
+
+# if __name__ == "__main__":
+#     app.run()
+from app_factory import create_app
+
+app = create_app()
 
 if __name__ == "__main__":
     app.run()
